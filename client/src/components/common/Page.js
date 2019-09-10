@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Header, Footer } from '../common/'
 
-// import 'scss/Page.css'
+import '../../scss/Page.scss'
 
 function Page (props) {
     return (

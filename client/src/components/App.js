@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import { Mainpage } from '../pages' 
+
+
+import { Mainpage, Authpage } from '../pages'
 class App extends Component {
     render() {
         return (
-            <Switch>
-                <Route exact path="/" component={Mainpage} />
-            </Switch>
+            <div>
+                <Switch>
+                    <Route exact path="/" component={Mainpage} />
+                    <Route path="/auth/:mode" component={Authpage} />
+                </Switch>
+            </div>           
         );
     }
 };
