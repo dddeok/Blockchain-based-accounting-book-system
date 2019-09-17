@@ -39,7 +39,7 @@ class Header extends Component {
                                         {auth.currentUser ?
                                             <>
                                             <DropdownItem onClick={auth.handleLogout}>로그아웃</DropdownItem>
-                                            <DropdownItem tag={Link} to="/https://twww.open-platform.or.kr/apt/mobileweb/authorize?client_id=l7xx84bb5a92a3f9493eac00214e8b5a2ab4&response_type=code&lang=kor&edit_option=&scope=login+inquiry+transfer&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2FBankAPi%2Fhtml%2Fcallback.html&client_info=test+whatever+you+want&auth_type=0&bg_color=%23FAFAFA&txt_color=%23050505&btn1_color=%23006DB8&btn2_color=%23818487&invoke_type=ajax&sessionID=36d7c255-54fa-48d7-9e41-8551d4e216cb&action=Grant&api_tran_id=74c53cc8-2885-4487-934e-dd548ad8c25a&gw_svc_id=793ca84b51e6c631d339e5180897dc2b&gw_app_key=l7xx84bb5a92a3f9493eac00214e8b5a2ab4&scope=login inquiry transfer&redirect_uri=http://localhost:8080/BankAPi/html/callback.html&auth_type=0">계좌등록</DropdownItem>
+                                            <DropdownItem onClick={auth.registerAccount}>계좌등록</DropdownItem>
                                             </>
                                             :
                                             <>

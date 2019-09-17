@@ -106,4 +106,17 @@ export default class AuthStore {
                 return
             })
     }
+
+    @observable accountAdd
+    
+    @action registerAccount = async(e) => {
+        e.preventDefault()
+         await axios.post(ROOT + '/api/bank/auth_code_url')
+             .then((res)=> {
+                 console.log(res)
+                 this.accountAdd = res.data.location
+                 console.log(res.data.location)
+                 window.open( this.accountAdd)
+             })
+    }
 }
