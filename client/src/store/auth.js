@@ -1,42 +1,48 @@
 import {observable, action} from 'mobx';
 import axios from 'axios';
 
+const ROOT = 'http://35.243.78.192:4000'
 
 export default class AuthStore {
-
+    
     constructor(root) {
         this.root= root;
     }
-    
+
     @observable currentUser = {}
 
     @action isLoggedIn = async () => {
-        await axios.get('/api/auth/check')
+        console.log("====isLogged IN");
+        console.log(this.currentUser)
+        await axios.get(ROOT + '/api/validate', {withCredentials: true})
             .then(res => {
-                this.currentUser = res.data
+                this.currentUser  = res.data.id
+                console.log("====isLoggeed Axios");
+                console.log(this.currentUser)
             })
             .catch((err) => {
                 return
             })
     }
 
-    @observable email = ''
-    @observable password = ''
+    @observable id = ''
+    @observable pswd = ''
 
     @action changeEmail = (e) => {
-        this.email = e.target.value
+        this.id = e.target.value
     }
 
     @action changePassword = (e) => {
-        this.password = e.target.value
+        this.pswd = e.target.value
     }
 
     @action loginSubmit = (e) => {
         e.preventDefault()
-        axios.post('/api/auth/login', {
-            email : this.email,
-            password : this.password
-        }).then(res => {
+        console.log("a");
+        axios.post(ROOT+ '/api/login',{
+            id : this.id,
+            pswd : this.pswd
+        }, {withCredentials: true}).then(res => {
             document.location.href="/"
         }).catch((err)=> console.error(err)
         ) 
@@ -48,9 +54,9 @@ export default class AuthStore {
         }
     }
 
-    @observable emailReg = ''
-    @observable usernameReg = ''
-    @observable passwordReg = ''
+    @observable idReg = ''
+    @observable pswdReg = ''
+    @observable union_nameReg = ''
 
     @action changeEmailReg = (e) => {
         this.emailReg = e.target.value
@@ -60,17 +66,21 @@ export default class AuthStore {
         this.usernameReg = e.target.value
     }
 
+    @action changeUnionnameReg = (e) => {
+        this.union_nameReg = e.target.value
+    }
+
     
     @action changePasswordReg = (e) => {
-        this.passwordReg = e.target.value
+        this.pswdReg = e.target.value
     }
 
     @action registerSubmit = (e) => {
         e.preventDefault()
-        axios.post('/api/auth/register', {
-            email: this.emailReg,
-            username : this.usernameReg,
-            password : this.passwordReg
+        axios.post(ROOT + '/api/join', {
+            id: this.emailReg,
+            union_name : this.union_nameReg,
+            pswd : this.pswdReg
         }).then(res => {
             document.location.href="/"
         }).catch((err) => console.error(err));
@@ -83,13 +93,17 @@ export default class AuthStore {
     }
 
     @action handleLogout = () => {
-        axios.post('api/auth/logout')
-            .then(()=> {
+    
+        //console.log("LogOut")
+        axios.post(ROOT + '/api/logout', {withCredentials:true})
+            .then((res)=> {
+                this.currentUser = {}
+                console.log("==================logout")
+                console.log(this.currentUser)
                 document.location.href="/"
             }).catch((err)=> {
                 console.error(err);
                 return
-                
             })
     }
 }

@@ -29,7 +29,7 @@ class Auth extends Component {
                         <Label for="password" sm={3}>비밀번호</Label>
                         <Col sm={9}>
                             <Input type="password" id="password"
-                                value={auth.password} onChange={auth.changePassword} onKeyPress={auth.keyPressLogin}
+                                value={auth.pswd} onChange={auth.changePassword} onKeyPress={auth.keyPressLogin}
                             />
                         </Col>
                     </FormGroup>
@@ -54,17 +54,17 @@ class Auth extends Component {
                         </Col>
                     </FormGroup>
                     <FormGroup row>
-                        <Label for="usernameReg" sm={3}>이 름</Label>
+                        <Label for="unionname" sm={3}>소속</Label>
                         <Col sm={9}>
-                            <Input type="username" id="usernameReg"
-                                value={auth.usernameReg} onChange={auth.changeUsernameReg}/>
+                            <Input type="unionname" id="unionname"
+                                value={auth.union_nameReg} onChange={auth.changeUnionnameReg}/>
                         </Col>
                     </FormGroup>
                     <FormGroup row>
                         <Label for="passwordReg" sm={3}>비밀번호</Label>
                         <Col sm={9}>
                             <Input type="password" id="passwordReg"
-                                value={auth.passwordReg} onChange={auth.changePasswordReg} onKeyPress={auth.keyPressRegister}/>
+                                value={auth.pswdReg} onChange={auth.changePasswordReg} onKeyPress={auth.keyPressRegister}/>
                         </Col>
                     </FormGroup>
                 </Form>
@@ -76,6 +76,7 @@ class Auth extends Component {
                 </CardFooter>
             </Card>
         )
+    
         return (
             <Row className="text-center" style={{justifyContent: 'center'}}>
                 <Col sm={4}>

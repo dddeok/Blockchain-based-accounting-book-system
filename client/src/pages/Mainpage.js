@@ -29,7 +29,6 @@ const TestData = [
 ]
 
 class Mainpage extends Component {
-    
     render() {
         return (
             <Page>

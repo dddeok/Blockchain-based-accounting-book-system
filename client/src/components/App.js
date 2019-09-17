@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 
 
 
-import { Mainpage, Authpage } from '../pages'
+import { Mainpage, Authpage, RegisterAccountpage } from '../pages'
 class App extends Component {
     render() {
         return (
@@ -11,6 +11,7 @@ class App extends Component {
                 <Switch>
                     <Route exact path="/" component={Mainpage} />
                     <Route path="/auth/:mode" component={Authpage} />
+                    <Route path="/register/account" component={RegisterAccountpage} />
                 </Switch>
             </div>           
         );

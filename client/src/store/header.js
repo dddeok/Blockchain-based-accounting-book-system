@@ -1,5 +1,6 @@
 import {observable, action} from 'mobx';
 
+
 export default class HeaderStore {
 
     @observable menuOpen = false;
