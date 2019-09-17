@@ -11,29 +11,27 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 
 import '../scss/Mainpage.scss'
+import {inject, observer} from "mobx-react";
 
 
-const TestData = [
-    {
-        id:1,
-        major: "정보컴퓨터공학부",
-        body: "기타등등",
-        date : '2019-09-11'
-    },
-    {
-        id:2,
-        major: "전기공학과",
-        body: "기타등등",
-        date : '2019-09-11'
-    }
-]
 
+@inject('main_page')
+@observer
 class Mainpage extends Component {
+
+    componentDidMount(){
+        //Todo 회원 부서정보 가져와서 loadMajorList 파라미터로!
+        this.props.main_page.loadMajorList("부산대학교 정보컴퓨터공학부")
+    }
+
     render() {
+        const { main_page } = this.props;
+
         return (
             <Page>
                 <Grid container spacing={40} className="cardGrid">
-                    {TestData.map(test => (
+                    {main_page.majorList
+                        .map(test => (
                         <Grid item key={test.id} xs={12} md={6}>
                             <Card className="card">
                                 <div className="cardDetails">
@@ -42,12 +40,12 @@ class Mainpage extends Component {
                                             {test.major}
                                         </Typography>
                                         <Typography variant="subtitle1" color="textSecondary">
-                                            {test.date}
+                                            {test.fintech_use_num}
                                         </Typography>
                                         <Typography variant="subtitle1" paragraph>
                                             {test.body}
                                         </Typography>
-                                        <Typography variant="subtitle1" color="primary">
+                                        <Typography variant="subtitle1" color="primary" onClick={main_page.detailClickHandler}>
                                             자세히보기
                                         </Typography>
                                     </CardContent>
