@@ -19,13 +19,13 @@ class Account extends Component {
                 <hr />
                 <Form>
                     <FormGroup row>
-                        <Label for="emailReg" style={{textAlign:'center' }}>계좌가 인증 되었습니다.</Label>
+                        <Label for="accountReg" style={{textAlign:'center' }}>계좌가 인증 되었습니다.</Label>
                         
                     </FormGroup>
                 </Form>
                 <CardFooter>
                     <Button block outline color="primary"
-                        onClick={auth.registerPinnumber(access)}>
+                        onClick={auth.registerPinnumber.bind(this, access)}>
                             확인
                     </Button>
                 </CardFooter>
