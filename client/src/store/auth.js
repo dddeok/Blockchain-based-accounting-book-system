@@ -116,7 +116,18 @@ export default class AuthStore {
                  console.log(res)
                  this.accountAdd = res.data.location
                  console.log(res.data.location)
-                 window.open( this.accountAdd)
-             })
+                 document.location.href=this.accountAdd
+            })
+            .then(()=> {
+                
+            })
+    }
+
+    @observable pinNumber
+
+    @action registerPinnumber = (access) => {
+        console.log("Click")
+        console.log(access)
+        // document.location.href="/"
     }
 }
