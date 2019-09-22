@@ -10,7 +10,7 @@ import { Row, Col, Form, FormGroup, Label, Input, CardFooter, Button,
 @observer
 class Account extends Component {
     render() {
-        const { auth, access } = this.props;
+        const { auth,  auth_code } = this.props;
 
     
         const SuccessAccountView = (
@@ -25,7 +25,7 @@ class Account extends Component {
                 </Form>
                 <CardFooter>
                     <Button block outline color="primary"
-                        onClick={auth.registerPinnumber.bind(this, access)}>
+                        onClick={auth.registerPinnumber.bind(this, auth_code)}>
                             확인
                     </Button>
                 </CardFooter>

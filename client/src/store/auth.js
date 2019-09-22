@@ -1,7 +1,7 @@
 import {observable, action} from 'mobx';
 import axios from 'axios';
 
-const ROOT = 'http://35.243.78.192:4000'
+const ROOT = 'http://35.243.78.192:4000';
 
 export default class AuthStore {
     
@@ -118,16 +118,22 @@ export default class AuthStore {
                  console.log(res.data.location)
                  document.location.href=this.accountAdd
             })
-            .then(()=> {
-                
-            })
     }
 
+    @observable auth_code
     @observable pinNumber
 
-    @action registerPinnumber = (access) => {
-        console.log("Click")
-        console.log(access)
+    @action registerPinnumber = (e) => {
+        console.log(e)
+        this.auth_code = e
+        axios.post(ROOT + '/api/bank/access_token',{
+            code : this.auth_code,
+            user_id : this.id
+        })
+        .then((res)=> {
+            this.pinNumber = res.data
+            document.location.href = "/"
+        })
         // document.location.href="/"
     }
 }

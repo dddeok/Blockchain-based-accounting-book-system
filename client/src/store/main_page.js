@@ -1,7 +1,7 @@
 import {observable, action} from 'mobx';
 import axios from 'axios';
 
-const ROOT = 'http://127.0.0.1:4000';
+const ROOT = 'http://35.243.78.192:4000';
 
 export default class MainPageStore {
 
@@ -40,8 +40,30 @@ export default class MainPageStore {
             });
     };
 
-    detailClickHandler = async () => {
-        console.log("=== detailClickHandler ===");
+    @observable detailsList = [    
+        {
+            id: 1,
+            date: "2019.08.13",
+            body: "어디서 썼냐",
+            price: "10000"
+        },
+        {
+            id: 2,
+            date: "2019.08.14",
+            body: "어디서 썼냐",
+            price: "10000"
+        },
+        {
+            id: 3,
+            date: "2019.08.15",
+            body: "어디서 썼냐",
+            price: "10000"
+        },
+    ] 
+
+    @action detailClickHandler = async () => {
+        console.log("=== detailClickHandler ===")
+        document.location.href = "/account/information"
     }
 
 
