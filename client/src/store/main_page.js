@@ -66,6 +66,13 @@ export default class MainPageStore {
         document.location.href = "/account/information"
     }
 
+    @action loadDetailsList = async(major) => {
+        await axios.post({
+            
+        })
+        console.log("=== loasDetailsList ===")
+    } 
+
 
 
 

@@ -9,7 +9,7 @@ export default class AuthStore {
         this.root= root;
     }
 
-    @observable currentUser = {}
+    @observable currentUser
 
     @action isLoggedIn = async () => {
         console.log("====isLogged IN");
@@ -125,10 +125,11 @@ export default class AuthStore {
 
     @action registerPinnumber = (e) => {
         console.log(e)
+        console.log(this.currentUser)
         this.auth_code = e
         axios.post(ROOT + '/api/bank/access_token',{
             code : this.auth_code,
-            user_id : this.id
+            user_id : this.currentUser
         })
         .then((res)=> {
             this.pinNumber = res.data

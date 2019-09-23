@@ -12,7 +12,9 @@ import { observer, inject } from 'mobx-react';
 @inject('main_page')
 @observer
 class InformationPage extends Component {
-    
+    componentDidMount(){
+        this.props.main_page.loadDetailsList()
+    }
     render() {
         const { main_page } = this.props;
 
@@ -34,7 +36,6 @@ class InformationPage extends Component {
                                         <Typography variant="subtitle1" paragraph>
                                             {test.price}
                                         </Typography>
-                                        
                                     </CardContent>
                                 </div>
                             </Card>
